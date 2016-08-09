@@ -23,9 +23,9 @@ class LearningAgent(Agent):
         deadline = self.env.get_deadline(self)
 
         # TODO: Update state
-        
+        states = [None, 'forward', 'left', 'right']
         # TODO: Select action according to your policy
-        action = None
+        action = states[random.randint(0, len(states)-1)]
 
         # Execute action and get reward
         reward = self.env.act(self, action)
@@ -41,7 +41,7 @@ def run():
     # Set up environment and agent
     e = Environment()  # create environment (also adds some dummy traffic)
     a = e.create_agent(LearningAgent)  # create agent
-    e.set_primary_agent(a, enforce_deadline=True)  # specify agent to track
+    e.set_primary_agent(a, enforce_deadline=False)  # specify agent to track
     # NOTE: You can set enforce_deadline=False while debugging to allow longer trials
 
     # Now simulate it
