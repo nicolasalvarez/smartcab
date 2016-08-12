@@ -109,7 +109,7 @@ def run():
     param_metrics = Reporter(metrics=['alpha', 'gamma', 'epsilon', 'trips_perf', 'infractions_perf'], live_plot=True)
 
     # Set up environment and agent
-    e = Environment()  # create environment (also adds some dummy traffic)
+    e = Environment(num_dummies=3)  # create environment (also adds some dummy traffic)
     a = e.create_agent(LearningAgent)  # create agent
     e.set_primary_agent(a, enforce_deadline=True)  # specify agent to track
     # NOTE: You can set enforce_deadline=False while debugging to allow longer trials
